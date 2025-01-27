@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+           
+        
+           
+        }
+
+        .bg {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: url("https://images.nightcafe.studio/jobs/OfI1kJJN5lrwsvWYvFpb/OfI1kJJN5lrwsvWYvFpb--1--3ndbz.jpg?tr=w-1600,c-at_max");
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px);
+            z-index: -1;
+
+        }
+
+        .form-container {
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+    
+        }
+
+        h1 {
+            color: #ffffff;
+            
+            
+        }
+
+        form {
+            background: linear-gradient(135deg, #bacee2, #76a7d1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+        }
+
+        td {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            text-align: center;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class ="bg"></div>
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        <form name="registrationForm" onsubmit="return validateForm();">
+            <table>
+                <tr>
+                    <td><label for="username">Name:</label></td>
+                    <td><input type="text" id="username" name="username" placeholder="Enter your name"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" placeholder="Enter a secure password"></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><input type="text" id="address" name="address" placeholder="Enter your address"></td>
+                </tr>
+                <tr>
+                    <td><label for="mobile">Mobile Number:</label></td>
+                    <td><input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" placeholder="Enter your email"></td>
+                </tr>
+                <tr>
+                    <td>Sex:</td>
+                    <td>
+                        <input type="radio" id="male" name="sex" value="Male"> <label for="male">Male</label>
+                        <input type="radio" id="female" name="sex" value="Female"> <label for="female">Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var address = document.getElementById("address").value;
+            var mobile = document.getElementById("mobile").value;
+            var email = document.getElementById("email").value;
+            var sexMale = document.getElementById("male").checked;
+            var sexFemale = document.getElementById("female").checked;
+
+            if (username === "") {
+                alert("Name is required");
+                return false;
+            }
+
+            if (password.length < 7 || password.length > 12) {
+                alert("Password must be between 7 and 12 characters");
+                return false;
+            }
+
+            if (address === "") {
+                alert("Address is required");
+                return false;
+            }
+
+            if (!/^[0-9]+$/.test(mobile)) {
+                alert("Mobile number must be numeric");
+                return false;
+            }
+
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                alert("Invalid email address");
+                return false;
+            }
+
+            if (!sexMale && !sexFemale) {
+                alert("Please select your sex");
+                return false;
+            }
+
+            alert("Form successfully submitted!");
+            return true;
+        }
+    </script>
+</body>
+</html>
